@@ -32,7 +32,7 @@ public class purge {
 	private static String USER_PWD = ""; // 操作员密码
 	
 	//例如：http://ceshi-images.b0.upaiyun.com/100.jpg\nhttp://ceshi-images.b0.upaiyun.com/100.jpg\n
-	private static String PURGE = "";
+	private static String PURGE = ""; // 要刷的链接地址
 	
 	private static String URL = "http://purge.upyun.com/purge/";
 	
