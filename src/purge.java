@@ -13,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.TimeZone;
 
 import org.apache.http.client.ClientProtocolException;
@@ -38,7 +39,7 @@ public class purge {
 	
 	public static void main(String args[]) {
 		Date now = new Date();
-		SimpleDateFormat df = new SimpleDateFormat("E, dd MMM yyyy HH:mm:ss");
+		SimpleDateFormat df = new SimpleDateFormat("E, dd MMM yyyy HH:mm:ss", Locale.US);
 		df.setTimeZone(TimeZone.getTimeZone("GMT"));
 		String date = df.format(now.getTime()) + " GMT";
 		String sign = md5(PURGE + "&" + BUCKET_NAME + "&" + date + "&" + md5(USER_PWD));
