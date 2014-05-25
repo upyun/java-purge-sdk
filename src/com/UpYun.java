@@ -7,10 +7,7 @@
 
 package com;
 
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -84,15 +81,15 @@ public class UpYun {
 		post.setHeader(AUTHORIZATION, "UpYun " + bucketName + ":" + userName + ":" + sign);
 		post.setHeader(DATE, getGMTDate());
 		
-		
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
 		params.add(new BasicNameValuePair("purge", url));
 		post.setEntity(new UrlEncodedFormEntity(params, Consts.UTF_8));
 		HttpResponse response;
+
 		try {
 			response = client.execute(post);
 			result = EntityUtils.toString(response.getEntity());	
-		} catch (IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
@@ -110,12 +107,8 @@ public class UpYun {
 			MessageDigest md5 = null;
 			try {
 				md5 = MessageDigest.getInstance("MD5");
-			} catch (NoSuchAlgorithmException e1) {
-				e1.printStackTrace();
-			}
-			try {
 				temp = md5.digest(strSrc.getBytes(UTF8));
-			} catch (UnsupportedEncodingException e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			
