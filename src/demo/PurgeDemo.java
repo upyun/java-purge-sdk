@@ -1,3 +1,10 @@
+/**
+ * @filename PurgeDemo.java
+ * @author lvtongda
+ * @date 2014-05-24
+ * @about JAVA 版本换成刷新 SDK DEMO
+ */
+
 package demo;
 
 import com.UpYun;

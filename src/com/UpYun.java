@@ -1,8 +1,8 @@
-/*
- * Filename: UpYun.java
- * Author: lvtongda 
- * Date: 2014-05-24
- * About: JAVA 版本缓存刷新 SDK
+/**
+ * @filename UpYun.java
+ * @author lvtongda 
+ * @date 2014-05-24
+ * @about JAVA 版本缓存刷新 SDK
  */
 
 package com;
