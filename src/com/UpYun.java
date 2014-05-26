@@ -7,7 +7,10 @@
 
 package com;
 
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -15,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Locale;
 import java.util.TimeZone;
 
+import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
@@ -24,6 +28,7 @@ import org.apache.http.util.EntityUtils;
 import org.apache.http.Consts;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
+import org.apache.http.ParseException;
 
 public class UpYun {
 	
@@ -84,12 +89,19 @@ public class UpYun {
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
 		params.add(new BasicNameValuePair("purge", url));
 		post.setEntity(new UrlEncodedFormEntity(params, Consts.UTF_8));
-		HttpResponse response;
-
+		HttpResponse response = null;
 		try {
 			response = client.execute(post);
-			result = EntityUtils.toString(response.getEntity());	
-		} catch (Exception e) {
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		try {
+			result = EntityUtils.toString(response.getEntity());
+		} catch (ParseException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
@@ -105,12 +117,18 @@ public class UpYun {
 			String result = "";
 			byte[] temp = null;
 			MessageDigest md5 = null;
+			
 			try {
 				md5 = MessageDigest.getInstance("MD5");
-				temp = md5.digest(strSrc.getBytes(UTF8));
-			} catch (Exception e) {
+			} catch (NoSuchAlgorithmException e) {
 				e.printStackTrace();
 			}
+			try {
+				temp = md5.digest(strSrc.getBytes(UTF8));
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
+
 			
 			for (int i = 0; i < temp.length; i++) {
 				result += Integer.toHexString((0x000000ff & temp[i]) | 0xffffff00).substring(6);
