@@ -44,7 +44,7 @@ public class UpYun {
 	
 	public static String PURGE_API = "http://purge.upyun.com/purge/";
 	
-	// 空间名
+	// 服务名称
 	protected String bucketName = null; 
 	// 操作员名
 	protected String userName = null; 

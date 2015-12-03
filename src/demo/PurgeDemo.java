@@ -11,7 +11,7 @@ import com.UpYun;
 
 public class PurgeDemo {
 	// 运行前先设置以下参数
-	private static final String BUCKET_NAME = "空间名";
+	private static final String BUCKET_NAME = "服务名称";
 	private static final String USER_NAME = "操作员名";
 	private static final String USER_PWD = "操作员密码";
 	
@@ -23,7 +23,7 @@ public class PurgeDemo {
 	
 	public static void main(String[] args) {
 		
-		// 初始化空间
+		// 初始化服务
 		upyun = new UpYun(BUCKET_NAME, USER_NAME, USER_PWD);
 	
 		// 刷新缓存
