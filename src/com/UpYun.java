@@ -9,7 +9,6 @@ package com;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
@@ -78,11 +77,7 @@ public class UpYun {
 	 * @return
 	 */
 	public String purgeUrl(String url) {
-		try {
-			url = URLEncoder.encode(url, "UTF-8").replace("http%3A%2F%2F", "http://");
-		} catch (UnsupportedEncodingException e1) {
-			e1.printStackTrace();
-		}
+
 		String result = null;
 		HttpClient client = HttpClientBuilder.create().build();
 		HttpPost post = new HttpPost(PURGE_API);
