@@ -1,6 +1,6 @@
 ### UPYUN Java 版缓存刷新 SDK
 
-基于又拍云 [缓存刷新 API 接口](http://docs.upyun.com/api/#缓存刷新_API) 开发。
+基于又拍云 [缓存刷新 API 接口](http://docs.upyun.com/api/purge/) 开发。
 
 #### 使用说明
 
